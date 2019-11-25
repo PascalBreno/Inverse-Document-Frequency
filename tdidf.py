@@ -2,16 +2,12 @@
 # TF = Numero de vezes que uma palavra ocorre no documento / Número total de palavras no documento
 import math
 
-text1 = "It is going to rain today"
-text2 = "today I am not going outside"
-text3 = "I am going to watch the season premiere"
 DicWords = []
 DicWord = {}
 DicWordAllDocument = {}
 
 
 def includeWordsOfDocuments(Document):
-    # TODO here need to add read in all Documents e add e return the number Documents
     Words = []
     for x in Document:
         Words.append(x.split(" "))
@@ -48,12 +44,12 @@ def setTF(NumberWordDocument):
             Document[word] = Document.get(word, "") * NumberWordDocument.get(word, "")
 
 
-def td(Documents2):
-    if type(Documents2) == list:
-        Documents = includeWordsOfDocuments(Documents2)
-    elif type(Documents2) == str:
-        Documents = []
-        Documents.append(Documents2)
+def getPoints(AllDocuments):
+    # Se tiver uma lista de documentos, então ele irá incluir em cada documento todas as palavras de todos os documentos
+    if type(AllDocuments) == list:
+        Documents = includeWordsOfDocuments(AllDocuments)
+    elif type(AllDocuments) == str:
+        Documents = [AllDocuments]
     # Check if exist word in Document actual and All Documents
     for words in Documents:
         for word in words:
